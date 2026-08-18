@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== DARK FUTURISTIC FINTECH — PURPLE THEME ===== */
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background:       250 16% 9%;
+    --surface:          250 15% 12%;
+    --surface-raised:   250 14% 15%;
+    --surface-overlay:  250 13% 19%;
+
+    /* Text */
+    --foreground:       250 30% 97%;
+    --foreground-muted: 250 15% 62%;
+    --foreground-subtle:250 12% 42%;
+
+    /* Card */
+    --card:             250 15% 12%;
+    --card-foreground:  250 30% 97%;
+
+    /* Popover */
+    --popover:          250 14% 15%;
+    --popover-foreground: 250 30% 97%;
+
+    /* Primary: vivid purple */
+    --primary:          264 80% 62%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow:     264 80% 72%;
+    --primary-dim:      264 60% 30%;
+
+    /* Status */
+    --success:          142 70% 48%;
+    --success-bg:       142 70% 48% / 0.12;
+    --danger:           4 86% 60%;
+    --danger-bg:        4 86% 60% / 0.12;
+    --warning:          38 92% 55%;
+    --warning-bg:       38 92% 55% / 0.12;
+
+    /* Income / Expense / Debt */
+    --income:           142 70% 48%;
+    --expense:          4 86% 60%;
+    --debt:             38 92% 55%;
+
+    /* Shadcn tokens */
+    --secondary:        252 14% 16%;
+    --secondary-foreground: 250 30% 97%;
+    --muted:            252 14% 13%;
+    --muted-foreground: 250 15% 55%;
+    --accent:           264 60% 22%;
+    --accent-foreground:250 30% 97%;
+    --destructive:      4 86% 60%;
+    --destructive-foreground: 250 30% 97%;
+    --border:           252 16% 18%;
+    --input:            252 16% 14%;
+    --ring:             264 80% 62%;
+    --radius:           1rem;
+
+    /* Shadows */
+    --shadow-card:      0 4px 24px 0 hsl(250 30% 3% / 0.55);
+    --shadow-glow-purple:0 0 28px 0 hsl(264 80% 62% / 0.30);
+    --shadow-glow-green: 0 0 24px 0 hsl(142 70% 48% / 0.25);
+    --shadow-glow-red:   0 0 24px 0 hsl(4 86% 60% / 0.20);
+
+    /* Gradients */
+    --gradient-card:    linear-gradient(145deg, hsl(250 15% 14%), hsl(250 16% 10%));
+    --gradient-hero:    linear-gradient(135deg, hsl(264 80% 62% / 0.18), hsl(250 16% 10%));
+    --gradient-income:  linear-gradient(135deg, hsl(142 70% 48% / 0.18), hsl(142 70% 48% / 0.04));
+    --gradient-expense: linear-gradient(135deg, hsl(4 86% 60% / 0.18), hsl(4 86% 60% / 0.04));
+    --gradient-debt:    linear-gradient(135deg, hsl(38 92% 55% / 0.18), hsl(38 92% 55% / 0.04));
+    --gradient-purple:  linear-gradient(135deg, hsl(264 80% 62% / 0.22), hsl(264 60% 30% / 0.08));
+
+    /* Sidebar */
+    --sidebar-background: 250 15% 12%;
+    --sidebar-foreground: 250 30% 97%;
+    --sidebar-primary:    264 80% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent:     252 14% 16%;
+    --sidebar-accent-foreground: 250 30% 97%;
+    --sidebar-border:     252 16% 18%;
+    --sidebar-ring:       264 80% 62%;
+  }
+
+  /* ========= THEMES (primary hue + accents) ========= */
+  /* Default = purple (already in :root). data-theme overrides below. */
+
+  [data-theme="cyan"] {
+    --primary: 190 92% 55%;
+    --primary-foreground: 210 40% 8%;
+    --primary-glow: 190 92% 68%;
+    --primary-dim: 190 60% 26%;
+    --accent: 190 60% 22%;
+    --ring: 190 92% 55%;
+    --sidebar-primary: 190 92% 55%;
+    --sidebar-ring: 190 92% 55%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(190 92% 55% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(190 92% 55% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(190 92% 55% / 0.22), hsl(190 60% 26% / 0.08));
+  }
+  [data-theme="emerald"] {
+    --primary: 152 72% 48%;
+    --primary-foreground: 152 40% 8%;
+    --primary-glow: 152 72% 60%;
+    --primary-dim: 152 55% 22%;
+    --accent: 152 55% 20%;
+    --ring: 152 72% 48%;
+    --sidebar-primary: 152 72% 48%;
+    --sidebar-ring: 152 72% 48%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(152 72% 48% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(152 72% 48% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(152 72% 48% / 0.22), hsl(152 55% 22% / 0.08));
+  }
+  [data-theme="rose"] {
+    --primary: 340 85% 62%;
+    --primary-foreground: 340 40% 10%;
+    --primary-glow: 340 85% 72%;
+    --primary-dim: 340 60% 28%;
+    --accent: 340 55% 22%;
+    --ring: 340 85% 62%;
+    --sidebar-primary: 340 85% 62%;
+    --sidebar-ring: 340 85% 62%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(340 85% 62% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(340 85% 62% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(340 85% 62% / 0.22), hsl(340 60% 28% / 0.08));
+  }
+  [data-theme="amber"] {
+    --primary: 38 95% 58%;
+    --primary-foreground: 38 40% 10%;
+    --primary-glow: 38 95% 68%;
+    --primary-dim: 38 60% 28%;
+    --accent: 38 55% 22%;
+    --ring: 38 95% 58%;
+    --sidebar-primary: 38 95% 58%;
+    --sidebar-ring: 38 95% 58%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(38 95% 58% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(38 95% 58% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(38 95% 58% / 0.22), hsl(38 60% 28% / 0.08));
+  }
+  [data-theme="sunset"] {
+    --primary: 14 90% 60%;
+    --primary-foreground: 14 40% 10%;
+    --primary-glow: 14 90% 70%;
+    --primary-dim: 14 60% 28%;
+    --accent: 14 55% 22%;
+    --ring: 14 90% 60%;
+    --sidebar-primary: 14 90% 60%;
+    --sidebar-ring: 14 90% 60%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(14 90% 60% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(14 90% 60% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(14 90% 60% / 0.22), hsl(14 60% 28% / 0.08));
+  }
+  [data-theme="ocean"] {
+    --primary: 218 90% 62%;
+    --primary-foreground: 218 40% 10%;
+    --primary-glow: 218 90% 72%;
+    --primary-dim: 218 60% 28%;
+    --accent: 218 55% 22%;
+    --ring: 218 90% 62%;
+    --sidebar-primary: 218 90% 62%;
+    --sidebar-ring: 218 90% 62%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(218 90% 62% / 0.32);
+    --gradient-hero: linear-gradient(135deg, hsl(218 90% 62% / 0.18), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(218 90% 62% / 0.22), hsl(218 60% 28% / 0.08));
+  }
+  [data-theme="monochrome"] {
+    --primary: 250 8% 88%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 250 8% 96%;
+    --primary-dim: 250 6% 30%;
+    --accent: 250 6% 22%;
+    --ring: 250 8% 80%;
+    --sidebar-primary: 250 8% 88%;
+    --sidebar-ring: 250 8% 80%;
+    --shadow-glow-purple: 0 0 28px 0 hsl(250 8% 80% / 0.22);
+    --gradient-hero: linear-gradient(135deg, hsl(250 8% 88% / 0.14), hsl(250 16% 10%));
+    --gradient-purple: linear-gradient(135deg, hsl(250 8% 88% / 0.18), hsl(250 6% 30% / 0.08));
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html { color-scheme: dark; }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Force dark color scheme for date inputs */
+  input[type="date"] { color-scheme: dark; }
+}
+
+@layer base {
+  :root {
+    /* ===== BRAND RikuAI: roxo -> coral/laranja ===== */
+    --brand-purple: 275 82% 45%;
+    --brand-violet: 288 72% 52%;
+    --brand-coral:  14 92% 65%;
+    --gradient-brand: linear-gradient(120deg, hsl(var(--brand-purple)), hsl(var(--brand-violet)) 45%, hsl(var(--brand-coral)));
+    --gradient-brand-soft: linear-gradient(120deg, hsl(var(--brand-purple) / 0.18), hsl(var(--brand-coral) / 0.14));
+    --shadow-brand: 0 10px 30px -10px hsl(var(--brand-purple) / 0.55), 0 4px 18px -6px hsl(var(--brand-coral) / 0.35);
+  }
+}
+
+@layer utilities {
+  .gradient-brand      { background-image: var(--gradient-brand); }
+  .gradient-brand-soft { background-image: var(--gradient-brand-soft); }
+  .shadow-brand        { box-shadow: var(--shadow-brand); }
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Semantic color utilities */
+
+  .text-income         { color: hsl(var(--income)); }
+  .text-expense        { color: hsl(var(--expense)); }
+  .text-debt           { color: hsl(var(--debt)); }
+  .text-success        { color: hsl(var(--success)); }
+  .text-danger         { color: hsl(var(--danger)); }
+  .text-warning        { color: hsl(var(--warning)); }
+  .text-muted-custom   { color: hsl(var(--foreground-muted)); }
+  .text-subtle         { color: hsl(var(--foreground-subtle)); }
+
+  .bg-income           { background: hsl(var(--income)); }
+  .bg-expense          { background: hsl(var(--expense)); }
+  .bg-surface          { background: hsl(var(--surface)); }
+  .bg-surface-raised   { background: hsl(var(--surface-raised)); }
+  .bg-surface-overlay  { background: hsl(var(--surface-overlay)); }
+
+  .border-surface      { border-color: hsl(var(--border)); }
+
+  .shadow-card         { box-shadow: var(--shadow-card); }
+  .shadow-glow-purple  { box-shadow: var(--shadow-glow-purple); }
+  .shadow-glow-green   { box-shadow: var(--shadow-glow-green); }
+  .shadow-glow-red     { box-shadow: var(--shadow-glow-red); }
+
+  .gradient-card       { background: var(--gradient-card); }
+  .gradient-income     { background: var(--gradient-income); }
+  .gradient-expense    { background: var(--gradient-expense); }
+  .gradient-debt       { background: var(--gradient-debt); }
+  .gradient-purple     { background: var(--gradient-purple); }
+}
+
+/* ===== MODO CLARO ===== */
+/* Sobrescreve apenas superfícies, texto e sombras. A cor primária continua
+   vindo do tema selecionado (data-theme), então todas as paletas funcionam
+   nos dois modos. */
+@layer base {
+  :root[data-appearance="light"] {
+    /* Layered surfaces: background < surface < raised < overlay, each a visible step up */
+    --background:       250 45% 98%;
+    --surface:          0 0% 100%;
+    --surface-raised:   250 30% 95.5%;
+    --surface-overlay:  250 26% 92%;
+
+    /* Foreground pairs meet WCAG AA (>= 4.5:1) on background/surface */
+    --foreground:       252 38% 11%;
+    --foreground-muted: 252 14% 34%;
+    --foreground-subtle:252 11% 48%;
+
+    --card:             0 0% 100%;
+    --card-foreground:  252 38% 11%;
+    --popover:          0 0% 100%;
+    --popover-foreground: 252 38% 11%;
+
+    --primary-foreground: 0 0% 100%;
+
+    --secondary:        250 28% 94%;
+    --secondary-foreground: 252 38% 11%;
+    --muted:            250 24% 94%;
+    --muted-foreground: 252 14% 36%;
+    --accent:           250 40% 92%;
+    --accent-foreground:252 38% 11%;
+    --destructive-foreground: 0 0% 100%;
+    /* Borders visible but soft — HIG hairline over white/near-white surfaces */
+    --border:           250 18% 82%;
+    --input:            250 22% 90%;
+
+    --success:          142 66% 30%;
+    --danger:           4 78% 42%;
+    --warning:          32 90% 36%;
+    --income:           142 66% 30%;
+    --expense:          4 78% 42%;
+    --debt:             32 90% 36%;
+
+    --shadow-card:      0 4px 20px 0 hsl(252 30% 40% / 0.10);
+    --shadow-glow-purple:0 0 24px 0 hsl(var(--primary) / 0.22);
+    --shadow-glow-green: 0 0 20px 0 hsl(142 62% 36% / 0.18);
+    --shadow-glow-red:   0 0 20px 0 hsl(4 74% 48% / 0.16);
+
+    --gradient-card:    linear-gradient(145deg, hsl(0 0% 100%), hsl(250 30% 96%));
+    --gradient-hero:    linear-gradient(135deg, hsl(var(--primary) / 0.14), hsl(250 35% 97%));
+    --gradient-income:  linear-gradient(135deg, hsl(142 66% 30% / 0.12), hsl(142 66% 30% / 0.03));
+    --gradient-expense: linear-gradient(135deg, hsl(4 78% 42% / 0.12), hsl(4 78% 42% / 0.03));
+    --gradient-debt:    linear-gradient(135deg, hsl(32 90% 36% / 0.12), hsl(32 90% 36% / 0.03));
+    --gradient-purple:  linear-gradient(135deg, hsl(var(--primary) / 0.16), hsl(var(--primary) / 0.04));
+
+    --sidebar-background: 250 32% 97%;
+    --sidebar-foreground: 252 38% 11%;
+    --sidebar-accent:     250 28% 94%;
+    --sidebar-accent-foreground: 252 38% 11%;
+    --sidebar-border:     250 18% 82%;
+  }
+}
+
+/* ===== APPLE-LEVEL POLISH ===== */
+@layer utilities {
+  /* Texto sobre superfícies coloridas (primary/income/expense/danger).
+     Branco nos dois modos — nunca "text-background", que desaparece no claro. */
+  .text-on-accent { color: hsl(0 0% 100%); }
+
+  /* Vidro premium (header, nav, modais) */
+  .glass {
+    background: hsl(var(--surface) / 0.72);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+
+  /* Cartões grandes estilo iOS */
+  .card-ios {
+    border-radius: 26px;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border) / 0.7);
+    box-shadow: var(--shadow-card);
+  }
+
+  .press { transition: transform .18s cubic-bezier(.34,1.56,.64,1); }
+  .press:active { transform: scale(.96); }
+}
+
+@layer base {
+  /* Modo claro: sombras suaves e bordas visíveis (HIG) */
+  :root[data-appearance="light"] {
+    --shadow-card: 0 1px 2px hsl(252 20% 30% / 0.05), 0 8px 24px -8px hsl(252 20% 30% / 0.14);
+  }
+  :root[data-appearance="light"] .glass {
+    background: hsl(0 0% 100% / 0.82);
+    border: 1px solid hsl(var(--border) / 0.8);
+  }
+  /* Superfícies claras nunca dependem de texto branco */
+  :root[data-appearance="light"] .gradient-card,
+  :root[data-appearance="light"] .card-ios {
+    border-color: hsl(var(--border));
+  }
+  /* Charts/gráficos: eixos e grades precisam de contraste suficiente no claro */
+  :root[data-appearance="light"] .recharts-cartesian-axis-tick text {
+    fill: hsl(var(--foreground-muted));
+  }
+  :root[data-appearance="light"] .recharts-cartesian-grid line {
+    stroke: hsl(var(--border));
+  }
+}
+
+@layer base {
+  /* Modo escuro: brilho (glow) sutil e comedido, nunca neon estourado */
+  :root:not([data-appearance="light"]) {
+    --shadow-glow-purple: 0 0 20px 0 hsl(264 80% 62% / 0.20);
+    --shadow-glow-green:  0 0 18px 0 hsl(142 70% 48% / 0.16);
+    --shadow-glow-red:    0 0 18px 0 hsl(4 86% 60% / 0.14);
+  }
+}
+
+@keyframes hero-drift {
+  0%   { transform: scale(1.06) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.12) translate3d(-1.5%, -1.5%, 0); }
+  100% { transform: scale(1.06) translate3d(0, 0, 0); }
+}
+
+@keyframes spring-in {
+  0%   { opacity: 0; transform: translateY(14px) scale(.97); }
+  60%  { opacity: 1; transform: translateY(-2px) scale(1.005); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-spring-in { animation: spring-in .42s cubic-bezier(.34,1.4,.64,1) both; }
+.animate-slide-up  { animation: spring-in .4s cubic-bezier(.34,1.4,.64,1) both; }

@@ -1,0 +1,12 @@
+REVOKE EXECUTE ON FUNCTION public.gen_referral_code() FROM anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.redeem_referral(text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.my_referral_stats() FROM anon;
+REVOKE EXECUTE ON FUNCTION public.public_profile(text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.has_active_premium(uuid, text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.social_feed() FROM anon;
+REVOKE EXECUTE ON FUNCTION public.search_people(text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.list_follows(uuid, text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.follow_counts(uuid) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.username_available(text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.can_view_achievements(uuid, uuid) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.has_workspace_access(uuid, uuid) FROM anon;

@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.2",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://tenlgnxpwleqdbcqmysl.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "riku-ai-mcp",
+      "version": "0.1.0",
+      "title": "Riku AI — Finanças"
+    },
+    "tools": [
+      {
+        "name": "list_workspaces",
+        "title": "Listar workspaces",
+        "description": "Lista os workspaces (ex.: Pessoal, Yakin Box) aos quais o usuário autenticado tem acesso.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_transactions",
+        "title": "Listar transações",
+        "description": "Lista transações (receitas e despesas) do usuário autenticado, opcionalmente filtradas por workspace e intervalo de datas.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "workspace_id": {
+              "description": "ID do workspace (opcional; se omitido, retorna de todos os workspaces do usuário).",
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "from": {
+              "description": "Data inicial ISO (YYYY-MM-DD).",
+              "type": "string"
+            },
+            "to": {
+              "description": "Data final ISO (YYYY-MM-DD).",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Máximo de registros (padrão 100).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_bills",
+        "title": "Listar contas",
+        "description": "Lista as contas (fixas, dívidas, cartões) do usuário autenticado, com filtro opcional por workspace e status de pagamento.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "workspace_id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "only_unpaid": {
+              "description": "Se true, retorna apenas contas não pagas.",
+              "type": "boolean"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_transaction",
+        "title": "Registrar transação",
+        "description": "Cria uma nova transação (receita ou despesa) em um workspace do usuário.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "workspace_id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "description": "Workspace onde criar a transação."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "income",
+                "expense"
+              ],
+              "description": "Tipo: income (receita) ou expense (despesa)."
+            },
+            "amount": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Valor em BRL (positivo)."
+            },
+            "category": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Categoria (ex.: Alimentação, Moradia, Salário)."
+            },
+            "description": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string",
+              "description": "Data ISO YYYY-MM-DD."
+            },
+            "payment_method": {
+              "type": "string",
+              "enum": [
+                "dinheiro",
+                "débito",
+                "crédito"
+              ]
+            }
+          },
+          "required": [
+            "workspace_id",
+            "type",
+            "amount",
+            "category",
+            "date"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
